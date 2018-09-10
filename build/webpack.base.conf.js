@@ -38,6 +38,8 @@ module.exports = {
       vue$: 'vue/dist/vue.esm.js',
       pages: resolve('src/pages'),
       components: resolve('src/shared/components'),
+      api: resolve('src/utils/api.js'),
+      router: resolve('src/router'),
       '@': resolve('src')
     }
   },
@@ -81,6 +83,10 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.scss$/,
+        use: ['vue-style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
