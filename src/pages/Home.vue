@@ -13,7 +13,11 @@ export default {
     msg: 'Welcome to Your Vue.js App',
   }),
   beforeRouteEnter (to, from, next) {
-    Cookies.get('name') ? next() : next({name: 'login'})
+    const cookie = JSON.parse(Cookies.get('vue-chat') || null) || {}
+
+    cookie && cookie.name && cookie.uid
+      ? next()
+      : next({name: 'login'})
   }
 }
 </script>

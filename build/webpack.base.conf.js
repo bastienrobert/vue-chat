@@ -40,6 +40,8 @@ module.exports = {
       components: resolve('src/shared/components'),
       api: resolve('src/utils/api.js'),
       router: resolve('src/router'),
+      helpers: resolve('src/utils/helpers'),
+      utils: resolve('src/utils'),
       '@': resolve('src')
     }
   },
