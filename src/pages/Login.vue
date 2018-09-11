@@ -10,6 +10,7 @@
 import router from 'router'
 import Cookies from 'js-cookie'
 import {generateGuid} from 'helpers'
+import {bus} from 'bus'
 
 import Hello from 'components/Hello'
 
@@ -20,6 +21,10 @@ export default {
   data: () => ({
     name: null
   }),
+  created: () => {
+
+    // sendMessage('Hello')
+  },
   methods: {
     connect: function() {
       const {name} = this
@@ -34,7 +39,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.Form {
+.Login {
 
 }
 </style>
