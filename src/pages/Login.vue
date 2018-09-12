@@ -1,6 +1,5 @@
 <template>
   <div class="Login">
-    <Hello />
     <input type="text" placeholder="Your name" v-model="name" />
     <button @click="connect">Submit</button>
   </div>
@@ -9,30 +8,20 @@
 <script>
 import router from 'router'
 import Cookies from 'js-cookie'
-import {generateGuid} from 'helpers'
-import {bus} from 'bus'
-
-import Hello from 'components/Hello'
+import { generateGuid } from 'helpers'
 
 export default {
-  components: {
-    Hello
-  },
   data: () => ({
     name: null
   }),
-  created: () => {
-
-    // sendMessage('Hello')
-  },
   methods: {
     connect: function() {
-      const {name} = this
+      const { name } = this
       const cookie = Cookies.get('vue-chat')
       const uid = generateGuid()
 
-      Cookies.set('vue-chat', JSON.stringify({...cookie, name, uid}))
-      router.push({name: 'root'})
+      Cookies.set('vue-chat', JSON.stringify({ ...cookie, name, uid }))
+      router.push({ name: 'root' })
     }
   }
 }
@@ -40,6 +29,5 @@ export default {
 
 <style lang="scss" scoped>
 .Login {
-
 }
 </style>

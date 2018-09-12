@@ -1,17 +1,22 @@
-// import socket from 'socket.io-client'
-import {bus} from 'bus'
+import io from 'socket.io-client'
+import store from 'store'
+import { api } from 'config'
 
 export default {
-
   install(Vue, options) {
-    // const io = socket(options.address)
+    const socket = io(api)
+
+    socket.on('connect', () => {
+      store.commit('CONNECTED', true)
+    })
 
     Vue.mixin({
-      sendMessage(msg) {
-        console.log('Send message: ' + msg)
-        bus.$emit('hey')
+      methods: {
+        sendMessage: message => {
+          store.commit('ADD_MESSAGE', { message })
+          socket.emit('message', { message })
+        }
       }
     })
   }
-
 }

@@ -35,15 +35,17 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
+      '@': resolve('src'),
       vue$: 'vue/dist/vue.esm.js',
-      pages: resolve('src/pages'),
-      bus: resolve('src/bus.js'),
-      components: resolve('src/shared/components'),
       api: resolve('src/utils/api.js'),
-      router: resolve('src/router'),
+      components: resolve('src/shared/components'),
+      config: resolve('src/config'),
       helpers: resolve('src/utils/helpers'),
-      utils: resolve('src/utils'),
-      '@': resolve('src')
+      icons: resolve('src/shared/icons'),
+      pages: resolve('src/pages'),
+      router: resolve('src/router'),
+      store: resolve('src/store'),
+      utils: resolve('src/utils')
     }
   },
   module: {
