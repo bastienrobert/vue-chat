@@ -13,8 +13,10 @@ export default {
 
 <style lang="scss">
 @import "~reset-css";
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
 
 #app {
   font-family: sans-serif;
+  font-size: 16px;
 }
 </style>

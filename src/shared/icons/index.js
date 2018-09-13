@@ -1,5 +1,5 @@
-import More from './More'
+import Cross from './Cross'
 
 export {
-  More
+  Cross
 }

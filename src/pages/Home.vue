@@ -1,27 +1,28 @@
 <template>
-  <div class="Home">
-    <div class="header">
-      <TopBar />
+  <div :class="$style.Home">
+    <div :class="$style.sidebar">
+      <Sidebar />
     </div>
-    <div class="sidebar">
-      <UsersList />
-    </div>
-    <div class="chat">
-      <MessagesList :messages="messages"/>
-      <div class="form">
-        <SendForm @addMessage="addMessage"/>
+    <div :class="$style.chat">
+      <TopBar @disconnect="disconnect" />
+      <div :class="$style.messages">
+        <MessagesList />
       </div>
+      <SendForm :user="user" />
     </div>
   </div>
 </template>
 
 <script>
 import Cookies from 'js-cookie'
+import { mapActions } from 'vuex'
 
 import TopBar from 'components/TopBar'
 import SendForm from 'components/SendForm'
 import MessagesList from 'components/MessagesList'
-import UsersList from 'components/UsersList'
+import Sidebar from 'components/Sidebar'
+
+const cookie = Cookies.getJSON('vue-chat') || {}
 
 export default {
   name: 'Home',
@@ -29,33 +30,53 @@ export default {
     TopBar,
     SendForm,
     MessagesList,
-    UsersList
+    Sidebar
   },
-  data: () => ({
-    messages: [
-      {text: 'Hello', from: 'Bastien'}
-    ]
-  }),
+  // created() {
+  //   const {name, uid} = cookie
+  //   this.setCurrentUser({name, uid})
+  // },
   methods: {
-    addMessage(msg) {
-      this.messages.push({
-        text: msg,
-        from: 'Bastien'
-      })
+    ...mapActions([
+      // 'setCurrentUser',
+      'clearCurrentUser'
+    ]),
+    disconnect() {
+      Cookies.remove('vue-chat')
+      this.clearCurrentUser()
+      this.$router.push({ name: 'login' })
     }
   },
-  beforeRouteEnter (to, from, next) {
-    const cookie = JSON.parse(Cookies.get('vue-chat') || null) || {}
-
-    cookie && cookie.name && cookie.uid
-      ? next()
-      : next({name: 'login'})
+  data: () => ({
+    user: {name: cookie.name, uid: cookie.uid}
+  }),
+  beforeRouteEnter: (to, from, next) => {
+    // cookie && cookie.name && cookie.avatar
+    //   ? next()
+    //   : next({name: 'login'})
+    next()
   }
 }
 </script>
 
-<style lang="scss" scoped>
-h1, h2 {
-  font-weight: normal;
+<style lang="scss" scoped module>
+.Home {
+  display: flex;
+  height: 100vh;
+  .sidebar {
+    width: 30%;
+    max-width: 400px;
+  }
+  .chat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .messages {
+    flex: 1;
+    max-height: 100%;
+    overflow: hidden;
+  }
 }
 </style>

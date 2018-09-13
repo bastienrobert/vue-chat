@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="157px" height="157px" viewBox="0 0 157 157" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>01_avatar1-v2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="49.1879795%" y1="150.991049%" x2="50.1470588%" y2="32.0716113%" id="linearGradient-1">
+            <stop stop-color="#0B5559" offset="0%"></stop>
+            <stop stop-color="#087075" offset="27%"></stop>
+            <stop stop-color="#02B3BB" offset="85%"></stop>
+            <stop stop-color="#00C6CF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="avatar/1" fill-rule="nonzero">
+            <g id="01_avatar1-v2">
+                <circle id="Oval" fill="url(#linearGradient-1)" cx="78.2" cy="78.2" r="78.2"></circle>
+                <ellipse id="Oval" fill="#068488" transform="translate(79.826773, 74.675074) rotate(-70.900000) translate(-79.826773, -74.675074) " cx="79.8267732" cy="74.6750736" rx="51.46" ry="19.3"></ellipse>
+                <ellipse id="Oval" fill="#324B4C" transform="translate(85.052481, 118.551312) rotate(-70.900000) translate(-85.052481, -118.551312) " cx="85.0524811" cy="118.551312" rx="25.73" ry="9.65"></ellipse>
+                <ellipse id="Oval" fill="#324B4C" transform="translate(48.584140, 105.920837) rotate(-70.900000) translate(-48.584140, -105.920837) " cx="48.5841396" cy="105.920837" rx="25.73" ry="9.65"></ellipse>
+                <circle id="Oval" fill="#EB307C" transform="translate(86.583454, 55.328825) rotate(-70.900000) translate(-86.583454, -55.328825) " cx="86.5834542" cy="55.3288248" r="12.39"></circle>
+                <circle id="Oval" fill="#324B4C" cx="86.58" cy="55.33" r="10.23"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

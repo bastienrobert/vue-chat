@@ -1,11 +1,13 @@
 <template>
-  <div class="Hello">
-    <h1>Hello World!</h1>
+  <div class="User">
+    {{ user.name }}
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: ['user']
+}
 </script>
 
 <style lang="scss" scoped>

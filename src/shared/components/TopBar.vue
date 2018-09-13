@@ -1,38 +1,49 @@
 <template>
-  <div class="TopBar">
-    <h1>Chat</h1>
-    <div class="MoreIcon">
-      <MoreIcon />
+  <div :class="$style.TopBar">
+    <h1>Galaxie BDDI</h1>
+    <div :class="$style.CrossIcon">
+      <CrossIcon @click="disconnect" />
     </div>
   </div>
 </template>
 
 <script>
-import {More as MoreIcon} from 'icons'
+import { Cross as CrossIcon } from 'icons'
 
 export default {
   components: {
-    MoreIcon
+    CrossIcon
+  },
+  methods: {
+    disconnect() {
+      this.$emit('disconnect')
+    }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped module>
 .TopBar {
   position: relative;
   display: flex;
   width: 100%;
   height: 60px;
-  background-color: #EDEDED;
+  background-color: $dark;
   align-items: center;
   justify-content: center;
 
   h1 {
-    color: #8BC7F4;
-    font-size: 2em;
+    color: $pink;
+    background: linear-gradient(90deg, $blue, $pink);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    font-size: .8em;
+    font-family: 'Montserrat';
+    font-weight: 600;
   }
 
-  .MoreIcon {
+  .CrossIcon {
     position: absolute;
     right: 30px;
   }

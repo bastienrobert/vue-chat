@@ -1,21 +1,26 @@
-import io from 'socket.io-client'
-import store from 'store'
-import { api } from 'config'
-
-export default {
-  install(Vue, options) {
-    const socket = io(api)
-
+export default function api (socket) {
+  return store => {
+    // outcoming data
     socket.on('connect', () => {
-      store.commit('CONNECTED', true)
+      store.commit('SET_CONNECTION_STATE', true)
     })
 
-    Vue.mixin({
-      methods: {
-        sendMessage: message => {
-          store.commit('ADD_MESSAGE', { message })
-          socket.emit('message', { message })
-        }
+    // incoming data
+    store.subscribe(mutation => {
+      const {type, payload} = mutation
+
+      switch (type) {
+        case 'ADD_MESSAGE':
+          socket.emit('message new', payload.message)
+          break
+        case 'SET_CURRENT_USER':
+          socket.emit('user register', payload)
+          break
+        case 'USER_TYPING':
+          socket.emit('user typing')
+          break
+        default:
+          return null
       }
     })
   }
