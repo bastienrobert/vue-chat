@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="309px" height="467px" viewBox="0 0 309 467" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>02_etoiles</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="chat" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ECRAN2" transform="translate(-16.000000, -7.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="02_etoiles" transform="translate(15.000000, 7.000000)">
+                <circle id="Oval" cx="31.77" cy="119.63" r="1.93"></circle>
+                <circle id="Oval" cx="60.21" cy="170.34" r="1.93"></circle>
+                <circle id="Oval" cx="18.74" cy="214.4" r="1.93"></circle>
+                <circle id="Oval" cx="24.52" cy="465.08" r="1.93"></circle>
+                <circle id="Oval" cx="11.44" cy="32.26" r="1.93"></circle>
+                <circle id="Oval" cx="196.94" cy="32.26" r="1.93"></circle>
+                <circle id="Oval" cx="288.09" cy="170.34" r="1.93"></circle>
+                <circle id="Oval" cx="286.16" cy="348.16" r="1.93"></circle>
+                <circle id="Oval" cx="253.61" cy="150.8" r="1.93"></circle>
+                <circle id="Oval" cx="94.19" cy="8.66" r="1.93"></circle>
+                <circle id="Oval" transform="translate(25.961000, 69.058082) rotate(-80.380000) translate(-25.961000, -69.058082) " cx="25.961" cy="69.058082" r="3.85"></circle>
+                <circle id="Oval" transform="translate(306.196697, 34.168595) rotate(-80.380000) translate(-306.196697, -34.168595) " cx="306.196697" cy="34.1685948" r="3.85"></circle>
+                <circle id="Oval" transform="translate(4.825235, 193.713102) rotate(-80.380000) translate(-4.825235, -193.713102) " cx="4.82523467" cy="193.713102" r="3.85"></circle>
+                <circle id="Oval" cx="83.15" cy="96.48" r="6.06"></circle>
+                <circle id="Oval" cx="294.15" cy="6.06" r="6.06"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

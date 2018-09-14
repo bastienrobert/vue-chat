@@ -14,14 +14,6 @@ export default {
   components: {
     Message
   },
-  mounted() {
-    this.autoscroll()
-  },
-  methods: {
-    autoscroll() {
-      this.$refs.wrapper.scrollTop = this.$refs.wrapper.scrollHeight
-    }
-  },
   computed: {
     ...mapGetters([
       'messages'
@@ -45,12 +37,6 @@ export default {
     height: 100%;
     margin: 0 auto;
     margin-bottom: 15px;
-    &::-webkit-scrollbar {
-      background-color: $darkGrey;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: $dark;
-    }
   }
 }
 </style>

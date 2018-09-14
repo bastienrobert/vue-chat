@@ -34,6 +34,11 @@ export default function api(socket) {
 
       switch (type) {
         case 'SET_CURRENT_USER':
+          if (!payload.username) {
+            socket.close()
+            socket.connect()
+            return null
+          }
           socket.emit('user register', payload)
           break
         case 'CURRENT_USER_TYPING':

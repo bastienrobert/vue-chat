@@ -26,17 +26,18 @@ export default {
   display: flex;
   text-align: left;
   padding: 0 12%;
-  margin: .4em 0;
+  margin: .5em 0;
   align-items: center;
   img {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
   }
   span {
     color: $white;
     text-transform: capitalize;
     text-transform: uppercase;
     margin-left: 1em;
+    font-size: .9em;
     &.blue {
       color: $blue;
     }

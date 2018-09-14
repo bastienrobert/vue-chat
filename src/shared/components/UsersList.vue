@@ -47,11 +47,18 @@ export default {
     color: $white;
     text-transform: uppercase;
     font-size: 1.4em;
-    margin-bottom: 1.5em;
+    margin-bottom: 40%;
   }
   .users {
-    max-height: 60vh;
+    max-height: 40vh;
     overflow: scroll;
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+      background-color: $darkGrey;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $dark;
+    }
   }
   .wrapper {
     display: flex;

@@ -25,9 +25,7 @@ npm run build --report
 ```
 
 ## TODO
-- Autoscroll
 - Some cool commands, like:
   - /starwars: launching the music
   - /rocket: launching condom rocket
 - Page transitions
-- Planets and parallax star effects

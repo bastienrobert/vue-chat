@@ -42,9 +42,6 @@ export default {
       const { username, avatar } = this
       if (username.length <= 0) return null
 
-      // const cookie = Cookies.getJSON('vue-chat')
-      //
-      // Cookies.set('vue-chat', { ...cookie, username, avatar })
       this.setCurrentUser({username, avatar})
       this.$router.push({ name: 'root' })
     }

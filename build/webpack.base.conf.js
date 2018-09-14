@@ -45,6 +45,7 @@ module.exports = {
       pages: resolve('src/pages'),
       router: resolve('src/router'),
       store: resolve('src/store'),
+      values: resolve('src/values'),
       utils: resolve('src/utils')
     }
   },

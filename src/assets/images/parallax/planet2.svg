@@ -1,0 +1,10 @@
+<svg id="planete_3_entiere" data-name="planete 3 entiere" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 123.41 123.41">
+  <defs>
+    <linearGradient id="Dégradé_sans_nom_166" data-name="Dégradé sans nom 166" x1="66.96" y1="16.64" x2="56.34" y2="107.71" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00c6cf"/>
+      <stop offset="1" stop-color="#324b4c"/>
+    </linearGradient>
+  </defs>
+  <title>02_planete3-v3</title>
+  <circle cx="61.71" cy="61.71" r="61.71" style="fill: url(#Dégradé_sans_nom_166)"/>
+</svg>
