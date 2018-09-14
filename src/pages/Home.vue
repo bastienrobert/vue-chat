@@ -61,6 +61,7 @@ export default {
     this.currentuser
       ? next()
       : next({name: 'login'})
+    next()
   }
 }
 </script>

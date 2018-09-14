@@ -38,11 +38,14 @@ export default {
     text-transform: uppercase;
     margin-left: 1em;
     font-size: .9em;
+    font-family: 'Montserrat';
     &.blue {
       color: $blue;
+      font-weight: 600;
     }
     &.pink {
       color: $pink;
+      font-weight: 600;
     }
   }
 }

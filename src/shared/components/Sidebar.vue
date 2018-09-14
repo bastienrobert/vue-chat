@@ -1,5 +1,6 @@
 <template>
   <div :class="$style.Sidebar">
+    <Bonus />
     <div :class="$style.background">
       <div :class="$style.stars" ref="stars" />
       <div :class="$style.planetSmall" ref="small" />
@@ -14,11 +15,13 @@ import values from 'values'
 
 import UsersList from './UsersList'
 import Parallax from './Parallax'
+import Bonus from './Bonus'
 
 export default {
   components: {
     UsersList,
-    Parallax
+    Parallax,
+    Bonus
   },
   mounted() {
     this.init()

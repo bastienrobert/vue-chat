@@ -1,5 +1,6 @@
 <template>
   <div :class="$style.Login">
+    <Flash />
     <Parallax :className="$style.Parallax"/>
     <div :class="$style.wrapper">
       <h1>Bonjour</h1>
@@ -24,6 +25,7 @@
 // import Cookies from 'js-cookie'
 import { mapActions } from 'vuex'
 
+import Flash from 'components/Flash'
 import Parallax from 'components/Parallax'
 
 export default {
@@ -32,7 +34,8 @@ export default {
     avatar: 'alien'
   }),
   components: {
-    Parallax
+    Parallax,
+    Flash
   },
   methods: {
     ...mapActions([
@@ -131,6 +134,7 @@ export default {
     font-size: 1em;
     padding-bottom: 6px;
     color: $white;
+    font-family: 'Montserrat';
     &::placeholder {
       color: rgba($white, .3);
     }

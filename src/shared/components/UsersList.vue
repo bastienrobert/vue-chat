@@ -48,6 +48,8 @@ export default {
     text-transform: uppercase;
     font-size: 1.4em;
     margin-bottom: 40%;
+    font-family: 'Montserrat';
+    font-weight: 600;
   }
   .users {
     max-height: 40vh;

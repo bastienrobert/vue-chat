@@ -20,6 +20,12 @@ export default function api(socket) {
       store.commit('TYPING', true)
     })
 
+    socket.on('command new', params => {
+      const { text } = params.message
+      text === '/rocket' && Emitter.emit('rocket')
+      text === '/wizz' && Emitter.emit('wizz')
+    })
+
     socket.on('users update', data => {
       store.commit('USERS_UPDATE', data)
     })

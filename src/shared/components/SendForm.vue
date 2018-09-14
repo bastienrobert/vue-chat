@@ -90,6 +90,7 @@ export default {
     border: 0;
     border-radius: 7px;
     min-height: 26px;
+    font-family: 'Montserrat';
     &::placeholder {
       font-style: italic;
     }
@@ -105,6 +106,7 @@ export default {
     color: $white;
     background-color: $pink;
     font-size: .7em;
+    font-family: 'Montserrat';
   }
 }
 </style>

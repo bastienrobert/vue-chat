@@ -6,7 +6,7 @@
         {{ message }}
       </div>
       <div :class="$style.from">
-        {{ from.username }}, {{ created }}
+        <strong>{{ from.username }}</strong>, {{ created }}
       </div>
     </div>
   </div>
@@ -14,7 +14,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { avatars, getRandomAvatar } from 'config'
+import { avatars } from 'config'
 
 export default {
   props: ['message', 'from', 'date'],
@@ -29,10 +29,10 @@ export default {
     },
     avatar() {
       const user = this.users.find(user => user.username === this.from.username)
-      return user ? avatars[user.avatar] : avatars[getRandomAvatar()]
+      return user ? avatars[user.avatar] : avatars['planet']
     },
     className() {
-      return this.from.username === this.currentuser.username ? `${this.$style.Message} ${this.$style.fromMe}` : this.$style.Message
+      return this.from.username === this.currentuser.username ? `${this.$style.fromMe} ${this.$style.Message}` : this.$style.Message
     }
   }
 }
@@ -42,6 +42,9 @@ export default {
 .fromMe {
   align-self: flex-end;
   flex-direction: row-reverse;
+  .content {
+    background-color: $doveGrey!important;
+  }
   .avatar {
     margin-left: 15px;
   }
@@ -73,11 +76,17 @@ export default {
     font-size: .95em;
     word-break: break-word;
     line-height: 1.5;
+    font-family: 'Montserrat';
   }
   .from {
     font-size: .8em;
     font-style: italic;
     color: $easternBlue;
+    font-family: 'Montserrat';
+    text-transform: capitalize;
+    strong {
+      font-weight: 600;
+    }
   }
 }
 </style>

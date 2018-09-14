@@ -1,28 +1,25 @@
 <template>
-  <div :class="$style.Flash">
-    <span v-for="i in 5" :key="i" ref="i" />
-  </div>
+  <transition name="flash">
+    <div :class="$style.Flash">
+      <span v-for="i in 5" :key="i" ref="i" />
+    </div>
+  </transition>
 </template>
 
 <script>
 export default {
-  mounted() {
-    console.log(this.refs)
-  },
-  methods: {
-    animate() {
 
-    }
-  }
 }
 </script>
 
 <style lang="scss" scoped module>
 .Flash {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
   span {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    position: absolute;
   }
   span:nth-child(1) {
     left: 10%;
@@ -58,6 +55,25 @@ export default {
     height: 30%;
     width: 1px;
     background-color: $white;
+  }
+
+  .flash-enter-active {
+    animation: flash .6s reverse;
+  }
+
+  .flash-leave-active {
+    animation: flash .6s reverse;
+  }
+
+  @keyframes flash {
+    from {
+      transform: translateY(-10%);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100%);
+      opacity: 0;
+    }
   }
 }
 </style>
