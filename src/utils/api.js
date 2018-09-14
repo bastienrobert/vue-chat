@@ -8,7 +8,9 @@ export default function api(socket) {
     })
 
     socket.on('message new', messages => {
-      store.commit('TYPING', false)
+      // store.commit('TYPING', false)
+
+      if (store.getters.bonus.msn) Emitter.emit('msn')
       store.commit('UPDATE_MESSAGES', messages)
     })
 
@@ -22,7 +24,7 @@ export default function api(socket) {
 
     socket.on('command new', params => {
       const { text } = params.message
-      text === '/rocket' && Emitter.emit('rocket')
+      text === '/condom' && Emitter.emit('rocket')
       text === '/wizz' && Emitter.emit('wizz')
     })
 

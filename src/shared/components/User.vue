@@ -11,11 +11,11 @@ import { avatars } from 'config'
 export default {
   props: ['user', 'index'],
   computed: {
-    avatar() {
-      return avatars[this.user.avatar]
-    },
     className() {
       return this.index % 2 ? this.$style.blue : this.$style.pink
+    },
+    avatar() {
+      return this.user.avatar || ''
     }
   }
 }

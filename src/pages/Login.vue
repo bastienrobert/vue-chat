@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.Login">
-    <Flash />
+    <!-- <Flash /> -->
     <Parallax :className="$style.Parallax"/>
     <div :class="$style.wrapper">
       <h1>Bonjour</h1>
@@ -24,6 +24,7 @@
 <script>
 // import Cookies from 'js-cookie'
 import { mapActions } from 'vuex'
+import { avatars } from 'config'
 
 import Flash from 'components/Flash'
 import Parallax from 'components/Parallax'
@@ -45,7 +46,7 @@ export default {
       const { username, avatar } = this
       if (username.length <= 0) return null
 
-      this.setCurrentUser({username, avatar})
+      this.setCurrentUser({username, avatar: avatars[avatar]})
       this.$router.push({ name: 'root' })
     }
   }

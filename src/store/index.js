@@ -32,7 +32,7 @@ const store = new Vuex.Store({
   },
   mutations: {
     EDIT_BONUS: (state, payload) => {
-      state.bonus = { ...state.bonus, payload }
+      state.bonus = { ...state.bonus, ...payload }
     },
     UPDATE_MESSAGES: (state, payload) => {
       state.messages = payload.messages
@@ -40,21 +40,12 @@ const store = new Vuex.Store({
     USERS_UPDATE: (state, payload) => {
       if (state.users.length <= 0) {
         state.users = payload.users.map(
-          user =>
-            user.avatar !== 'alien' ||
-            user.avatar !== 'rocket' ||
-            user.avatar !== 'planet'
-              ? { ...user, avatar: getRandomAvatar() }
-              : user
+          user => !user.avatar ? { ...user, avatar: getRandomAvatar() } : user
         )
       } else {
         if (payload.user.type === 'join') {
-          const user = payload.user
-          if (
-            user.avatar !== 'alien' ||
-            user.avatar !== 'rocket' ||
-            user.avatar !== 'planet'
-          ) {
+          let user = payload.user
+          if (!user.avatar) {
             user.avatar = getRandomAvatar()
           }
           state.users.push(user)
@@ -86,7 +77,10 @@ const store = new Vuex.Store({
     // Need o be checked again, some errors here probably
     userIsTyping: ({ commit, state }, payload) => {
       commit('CURRENT_USER_TYPING', payload)
-    }
+    },
+    editBonus: ({ commit, state }, payload) => {
+      commit('EDIT_BONUS', payload)
+    },
   },
   plugins: [plugin],
   strict: true

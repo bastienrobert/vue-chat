@@ -1,21 +1,27 @@
 <template>
   <div>
     <img src="@/assets/images/rocket.svg" :class="$style.rocket" ref="rocket" />
-    <audio src="@/assets/sounds/msn.mp3" ref="msn" />
   </div>
 </template>
 
 <script>
 import Emitter from 'utils/Emitter'
+import wizzAudio from '@/assets/sounds/wizz.wav'
+import msnAudio from '@/assets/sounds/msn.mp3'
+
+const wizz = new Audio(wizzAudio)
+const msn = new Audio(msnAudio)
 
 export default {
   mounted() {
     Emitter.on('rocket', this.rocket)
     Emitter.on('wizz', this.wizz)
+    Emitter.on('msn', this.msn)
   },
   destroyed() {
     Emitter.off('rocket', this.rocket)
     Emitter.off('wizz', this.wizz)
+    Emitter.off('msn', this.msn)
   },
   methods: {
     rocket() {
@@ -27,7 +33,10 @@ export default {
       }, 3000)
     },
     wizz() {
-      this.$refs.msn.play()
+      wizz.play()
+    },
+    msn() {
+      msn.play()
     }
   }
 }

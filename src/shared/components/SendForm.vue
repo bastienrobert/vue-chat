@@ -24,13 +24,15 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'typing'
+      'typing',
+      'bonus'
     ])
   },
   methods: {
     ...mapActions([
       'addMessage',
-      'userIsTyping'
+      'userIsTyping',
+      'editBonus'
     ]),
     onTyping() {
       // !this.typing && this.userIsTyping(true)
@@ -39,6 +41,9 @@ export default {
       this.message = this.message + emoji.native
     },
     onSubmit() {
+      if (this.message === '/msn') {
+        this.editBonus({ msn: !this.bonus.msn })
+      }
       Emitter.emit('ADD_MESSAGE', { message: this.message })
       this.message = ''
       this.userIsTyping(false)

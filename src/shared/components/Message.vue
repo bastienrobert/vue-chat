@@ -29,7 +29,7 @@ export default {
     },
     avatar() {
       const user = this.users.find(user => user.username === this.from.username)
-      return user ? avatars[user.avatar] : avatars['planet']
+      return user ? user.avatar : avatars['planet']
     },
     className() {
       return this.from.username === this.currentuser.username ? `${this.$style.fromMe} ${this.$style.Message}` : this.$style.Message

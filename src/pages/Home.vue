@@ -85,6 +85,7 @@ export default {
     max-height: 100%;
     overflow: scroll;
     overflow-x: hidden;
+    scroll-behavior: smooth;
     &::-webkit-scrollbar {
       background-color: $darkGrey;
     }
