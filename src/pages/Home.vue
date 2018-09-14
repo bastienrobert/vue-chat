@@ -8,21 +8,21 @@
       <div :class="$style.messages">
         <MessagesList />
       </div>
-      <SendForm :user="user" />
+      <SendForm />
     </div>
   </div>
 </template>
 
 <script>
-import Cookies from 'js-cookie'
-import { mapActions } from 'vuex'
+// import Cookies from 'js-cookie'
+import { mapActions, mapGetters } from 'vuex'
 
 import TopBar from 'components/TopBar'
 import SendForm from 'components/SendForm'
 import MessagesList from 'components/MessagesList'
 import Sidebar from 'components/Sidebar'
 
-const cookie = Cookies.getJSON('vue-chat') || {}
+// const cookie = Cookies.getJSON('vue-chat') || {}
 
 export default {
   name: 'Home',
@@ -42,18 +42,20 @@ export default {
       'clearCurrentUser'
     ]),
     disconnect() {
-      Cookies.remove('vue-chat')
+      // Cookies.remove('vue-chat')
       this.clearCurrentUser()
       this.$router.push({ name: 'login' })
     }
   },
-  data: () => ({
-    user: {name: cookie.name, uid: cookie.uid}
-  }),
+  computed: {
+    ...mapGetters([
+      'currentuser'
+    ])
+  },
   beforeRouteEnter: (to, from, next) => {
-    // cookie && cookie.name && cookie.avatar
-    //   ? next()
-    //   : next({name: 'login'})
+    this.currentuser
+      ? next()
+      : next({name: 'login'})
     next()
   }
 }
@@ -76,7 +78,7 @@ export default {
   .messages {
     flex: 1;
     max-height: 100%;
-    overflow: hidden;
+    overflow: scroll;
   }
 }
 </style>

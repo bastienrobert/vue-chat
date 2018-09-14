@@ -1,9 +1,7 @@
 <template>
   <div :class="$style.MessagesList">
-    <div :class="$style.wrapper">
-      <div v-for="({message, user}) in messages">
-        <Message :message="message" :from="user" />
-      </div>
+    <div :class="$style.wrapper" ref="wrapper">
+      <Message :message="text" :from="user" :date="created" v-for="({text, user, created}) in messages" :key="created" />
     </div>
   </div>
 </template>
@@ -15,6 +13,14 @@ import { mapGetters } from 'vuex'
 export default {
   components: {
     Message
+  },
+  mounted() {
+    this.autoscroll()
+  },
+  methods: {
+    autoscroll() {
+      this.$refs.wrapper.scrollTop = this.$refs.wrapper.scrollHeight
+    }
   },
   computed: {
     ...mapGetters([
@@ -29,7 +35,7 @@ export default {
   display: flex;
   align-items: flex-end;
   background-color: $dark;
-  height: 100%;
+  min-height: 100%;
   overflow: hidden;
   .wrapper {
     display: flex;
@@ -38,8 +44,7 @@ export default {
     width: 90%;
     height: 100%;
     margin: 0 auto;
-    overflow: scroll;
-    overflow-x: hidden;
+    margin-bottom: 15px;
     &::-webkit-scrollbar {
       background-color: $darkGrey;
     }

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import api from 'api'
 import io from 'socket.io-client'
-import { host } from 'config'
+import { host, getRandomAvatar } from 'config'
 
 Vue.use(Vuex)
 
@@ -15,20 +15,53 @@ const store = new Vuex.Store({
     users: [],
     currentuser: null,
     messages: [],
-    typing: false
+    typing: false,
+    currentUserTyping: false,
+    bonus: {
+      msn: false
+    }
   },
   getters: {
+    bonus: state => state.bonus,
     messages: state => state.messages,
+    queue: state => state.queue,
     currentuser: state => state.currentuser,
     users: state => state.users,
-    typing: state => state.typing
+    typing: state => state.typing,
+    currentUserTyping: state => state.currentUserTyping
   },
   mutations: {
-    ADD_MESSAGE: (state, payload) => {
-      state.messages.push(payload)
+    EDIT_BONUS: (state, payload) => {
+      state.bonus = { ...state.bonus, payload }
     },
-    ADD_USER: (state, payload) => {
-      state.messages.push(payload)
+    UPDATE_MESSAGES: (state, payload) => {
+      state.messages = payload.messages
+    },
+    USERS_UPDATE: (state, payload) => {
+      if (state.users.length <= 0) {
+        state.users = payload.users.map(
+          user =>
+            user.avatar !== 'alien' ||
+            user.avatar !== 'rocket' ||
+            user.avatar !== 'planet'
+              ? { ...user, avatar: getRandomAvatar() }
+              : user
+        )
+      } else {
+        if (payload.user.type === 'join') {
+          const user = payload.user
+          if (
+            user.avatar !== 'alien' ||
+            user.avatar !== 'rocket' ||
+            user.avatar !== 'planet'
+          ) {
+            user.avatar = getRandomAvatar()
+          }
+          state.users.push(user)
+        } else {
+          state.users = state.users.filter(user => user !== payload.user)
+        }
+      }
     },
     SET_CURRENT_USER: (state, payload) => {
       state.currentuser = payload
@@ -38,22 +71,21 @@ const store = new Vuex.Store({
     },
     TYPING: (state, payload) => {
       state.typing = payload
+    },
+    CURRENT_USER_TYPING: (state, payload) => {
+      state.currentUserTyping = payload
     }
   },
   actions: {
-    addMessage: ({commit, state}, payload) => {
-      if (payload.message.length <= 0) return null
-      commit('ADD_MESSAGE', payload)
-    },
-    setCurrentUser: ({commit, state}, payload) => {
+    setCurrentUser: ({ commit, state }, payload) => {
       commit('SET_CURRENT_USER', payload)
     },
-    clearCurrentUser: ({commit, state}, payload) => {
-      commit('SET_CURRENT_USER', null)
+    clearCurrentUser: ({ commit, state }, payload) => {
+      commit('SET_CURRENT_USER', {})
     },
     // Need o be checked again, some errors here probably
-    userIsTyping: ({commit, state}, payload) => {
-      commit('TYPING', payload)
+    userIsTyping: ({ commit, state }, payload) => {
+      commit('CURRENT_USER_TYPING', payload)
     }
   },
   plugins: [plugin],

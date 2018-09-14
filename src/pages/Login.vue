@@ -6,11 +6,11 @@
       <p>Et bienvenue sur ce chat interstellaire;<br> pour commencer, indiquez votre pseudo<br> et attachez votre ceinture.</p>
       <form @submit.prevent="onSubmit">
         <div :class="$style.avatars">
-          <input type="radio" name="avatar" id="avatar-1" :value="1" v-model="avatar">
+          <input type="radio" name="avatar" id="avatar-1" value="alien" v-model="avatar">
           <label for="avatar-1" :class="$style.avatar" />
-          <input type="radio" name="avatar" id="avatar-2" :value="2" v-model="avatar">
+          <input type="radio" name="avatar" id="avatar-2" value="planet" v-model="avatar">
           <label for="avatar-2" :class="$style.avatar" />
-          <input type="radio" name="avatar" id="avatar-3" :value="3" v-model="avatar">
+          <input type="radio" name="avatar" id="avatar-3" value="rocket" v-model="avatar">
           <label for="avatar-3" :class="$style.avatar" />
         </div>
         <input type="text" placeholder="Entrez votre pseudo" v-model="username">
@@ -29,7 +29,7 @@ import Parallax from 'components/Parallax'
 export default {
   data: () => ({
     username: null,
-    avatar: 1
+    avatar: 'alien'
   }),
   components: {
     Parallax

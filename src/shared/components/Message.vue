@@ -1,38 +1,64 @@
 <template>
-  <div :class="$style.Message">
-    <div :class="$style.avatar" />
+  <div :class="className">
+    <img :class="$style.avatar" :src="avatar" />
     <div :class="$style.content">
       <div :class="$style.message">
         {{ message }}
       </div>
       <div :class="$style.from">
-        {{ from.name }}
+        {{ from.username }}, {{ created }}
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import { avatars, getRandomAvatar } from 'config'
+
 export default {
-  props: ['message', 'from']
+  props: ['message', 'from', 'date'],
+  computed: {
+    ...mapGetters([
+      'currentuser',
+      'users'
+    ]),
+    created() {
+      const date = new Date(this.date)
+      return `${date.getHours()}h${date.getMinutes()}`
+    },
+    avatar() {
+      const user = this.users.find(user => user.username === this.from.username)
+      return user ? avatars[user.avatar] : avatars[getRandomAvatar()]
+    },
+    className() {
+      return this.from.username === this.currentuser.username ? `${this.$style.Message} ${this.$style.fromMe}` : this.$style.Message
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped module>
+.fromMe {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+  .avatar {
+    margin-left: 15px;
+  }
+}
 .Message {
   position: relative;
   display: flex;
   width: 60%;
   max-width: 600px;
   padding: 15px 0;
-  align-items: flex-start;
+  align-items: center;
   .avatar {
     height: 35px;
     width: 35px;
     background-color: $white;
     border-radius: 50%;
     margin-right: 15px;
-    margin-top: 5px;
   }
   .content {
     position: relative;
@@ -44,7 +70,9 @@ export default {
   .message {
     color: $white;
     margin-bottom: 7px;
+    font-size: .95em;
     word-break: break-word;
+    line-height: 1.5;
   }
   .from {
     font-size: .8em;

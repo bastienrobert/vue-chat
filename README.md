@@ -23,3 +23,11 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
+
+## TODO
+- Autoscroll
+- Some cool commands, like:
+  - /starwars: launching the music
+  - /rocket: launching condom rocket
+- Page transitions
+- Planets and parallax star effects

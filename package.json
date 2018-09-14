@@ -31,6 +31,7 @@
     "classnames": "^2.2.6",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",
+    "emoji-mart-vue": "^2.6.4",
     "eslint": "^4.15.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-friendly-formatter": "^4.0.1",

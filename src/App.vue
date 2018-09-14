@@ -1,13 +1,20 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
-    <router-view/>
+    <transition name="flash">
+      <router-view/>
+    </transition>
+    <!-- <Flash /> -->
   </div>
 </template>
 
 <script>
+import Flash from 'components/flash'
+
 export default {
   name: 'App',
+  components: {
+    Flash
+  }
 }
 </script>
 
@@ -18,5 +25,6 @@ export default {
 #app {
   font-family: sans-serif;
   font-size: 16px;
+  background-color: $darkGrey;
 }
 </style>
